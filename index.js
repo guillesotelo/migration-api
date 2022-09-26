@@ -24,7 +24,7 @@ const getApplicationStatus = async cn => {
     } catch (err) { console.error(err) }
 }
 
-const sendEmails = () => {
+const sendEmails = async (res) => {
     const result_guille = await getApplicationStatus(CN_GUILLE)
     const result_dany = await getApplicationStatus(CN_DANY)
     const name_guille = 'Visa Guille: '
