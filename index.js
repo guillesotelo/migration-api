@@ -8,8 +8,7 @@ const CN_DANY = '59641351'
 const transporter = require('./mailer')
 
 app.get('/', async (req, res) => {
-    // setTimeout(() => sendEmails(), 43200000)
-    setTimeout(() => sendEmails(), 30000)
+    setInterval(() => sendEmails(), 43200000)
 })
 
 app.listen(PORT, () => {
