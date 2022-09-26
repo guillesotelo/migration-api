@@ -9,7 +9,7 @@ const transporter = require('./mailer')
 
 app.get('/', async (req, res) => {
     // setTimeout(sendEmails(), 43200000)
-    setTimeout(sendEmails(), 10000)
+    setTimeout(res.send("FUNCA"), 5000)
 })
 
 app.listen(PORT, () => {
