@@ -8,8 +8,8 @@ const CN_DANY = '59641351'
 const transporter = require('./mailer')
 
 app.get('/', async (req, res) => {
-    // setInterval(() => sendEmails(), 43200000)
-    res.send("ok")
+    const html = await sendEmails()
+    res.send(html)
 })
 
 app.listen(PORT, () => {
@@ -37,12 +37,12 @@ const sendEmails = async () => {
     if (result_dany.includes('BEHANDLAS')) status_dany = name_dany + 'Sin Respuesta 😐'
     else if (result_dany.includes('BESLUTAT')) status_dany = name_dany + 'Llegó la Visa!!! 🙀🙀🙀'
 
-    // res.send(status_guille + '<br>' + status_dany)
-
     await transporter.sendMail({
         from: `"Visa Status" <${process.env.EMAIL}>`,
         to: 'guille.sotelo.cloud@gmail.com',
         subject: 'Visa Status',
         html: '<h2>' + status_guille + '</h2>' + '<br>' + '<h2>' + status_dany + '</h2>'
     }).catch((err) => console.error('Something went wrong!', err))
+
+    return status_guille + '<br>' + status_dany
 }
