@@ -7,12 +7,12 @@ const CN_GUILLE = '59641251'
 const CN_DANY = '59641351'
 const transporter = require('./mailer')
 
-app.get('/', async (req, res) => {
+app.get('/getvisa', async (req, res) => {
     const html = await sendEmails()
     res.send(html)
 })
 
-app.get('/all', async (req, res) => {
+app.get('/getall', async (req, res) => {
     const html = await getLastApplications()
     res.send(html)
 })
